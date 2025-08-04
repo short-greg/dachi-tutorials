@@ -1,1 +1,4 @@
-
+.gitmodules
+.env
+framework/
+venv
