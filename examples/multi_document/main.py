@@ -13,7 +13,9 @@ Run with: python run.py multi_document
 import streamlit as st
 import asyncio
 import os
+import sys
 from typing import Dict, Any
+from dotenv import load_dotenv
 
 # Import tutorial components
 from components import (
@@ -29,37 +31,39 @@ from processor import analyze_documents
 
 def main():
     """Main Streamlit application."""
+    # Load environment variables
+    load_dotenv()
+    
+    # Check for OpenAI API key in environment
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        st.error("🚨 OpenAI API key not found in environment variables.")
+        st.error("Please contact your administrator to set up the OPENAI_API_KEY environment variable.")
+        st.info("The system cannot run without a valid OpenAI API key.")
+        st.stop()
+    
     st.set_page_config(
         page_title="Dachi Multi-Document Analysis",
-        page_icon="📚",
         layout="wide"
     )
     
-    st.title("📚 Multi-Document Analysis Pipeline")
+    st.title("Multi-Document Analysis Pipeline")
     st.markdown("""
     **Dachi Framework Tutorial: Processing Documents in Parallel**
     
     This tutorial demonstrates:
-    - 🔄 **async_process_map**: Process document chunks in parallel
-    - 🎯 **signaturemethod**: LLM integration with templated signatures  
-    - ✂️ **Chunk**: Intelligent document segmentation
-    - 📡 **Streaming**: Real-time progress updates
+    - **async_process_map**: Process document chunks in parallel
+    - **signaturemethod**: LLM integration with templated signatures  
+    - **Chunk**: Intelligent document segmentation
+    - **Streaming**: Real-time progress updates
     """)
     
     # Sidebar for configuration
     with st.sidebar:
-        st.header("⚙️ Configuration")
+        st.header("Configuration")
         
-        # API Key input
-        api_key = st.text_input(
-            "OpenAI API Key", 
-            type="password",
-            help="Required for LLM operations via Dachi's OpenAI adapter"
-        )
-        
-        if not api_key:
-            st.warning("Please enter your OpenAI API key to proceed.")
-            return
+        # Show API key status
+        st.success("OpenAI API key loaded from environment")
         
         # Processing options
         st.subheader("Processing Options")
@@ -80,7 +84,7 @@ def main():
         )
     
     # Main content area
-    tab1, tab2, tab3 = st.tabs(["📁 Upload Documents", "⚙️ Process & Analyze", "📊 View Results"])
+    tab1, tab2, tab3 = st.tabs(["Upload Documents", "Process & Analyze", "View Results"])
     
     with tab1:
         # Document upload section
@@ -100,7 +104,7 @@ def main():
             st.session_state.doc_source = "sample"
     
     with tab2:
-        st.header("🚀 Start Analysis")
+        st.header("Start Analysis")
         
         if 'documents' not in st.session_state or not st.session_state.documents:
             st.warning("Please upload documents or load sample documents first.")
@@ -112,10 +116,10 @@ def main():
         # Show document summary
         for filename, content in documents.items():
             word_count = len(content.split())
-            st.write(f"📄 **{filename}**: {word_count} words")
+            st.write(f"**{filename}**: {word_count} words")
         
         # Analysis button
-        if st.button("🔬 Start Analysis", type="primary", use_container_width=True):
+        if st.button("Start Analysis", type="primary", use_container_width=True):
             # Create progress tracking containers
             progress_containers = progress_tracker_component()
             
@@ -123,7 +127,7 @@ def main():
             run_analysis(documents, api_key, progress_containers, chunk_size, max_workers)
     
     with tab3:
-        st.header("📊 Analysis Results")
+        st.header("Analysis Results")
         
         if 'analysis_results' in st.session_state:
             results = st.session_state.analysis_results
@@ -172,7 +176,7 @@ def run_analysis(documents: Dict[str, str], api_key: str, progress_containers: D
                     
                     if status == 'completed':
                         chunks_count = update.get('chunks_count', 0)
-                        st.info(f"📝 Created {chunks_count} chunks for parallel processing")
+                        st.info(f"Created {chunks_count} chunks for parallel processing")
                 
                 elif step == 'analysis':
                     progress = 1.0 if status == 'completed' else 0.5
@@ -180,7 +184,7 @@ def run_analysis(documents: Dict[str, str], api_key: str, progress_containers: D
                     
                     if status == 'completed':
                         results['chunk_results'] = update.get('chunk_results', [])
-                        st.success(f"🔍 Analyzed {len(results['chunk_results'])} chunks using async_process_map")
+                        st.success(f"Analyzed {len(results['chunk_results'])} chunks using async_process_map")
                 
                 elif step == 'synthesis':
                     progress = 1.0 if status == 'completed' else 0.7
@@ -188,14 +192,13 @@ def run_analysis(documents: Dict[str, str], api_key: str, progress_containers: D
                     
                     if status == 'completed':
                         results['final_results'] = update.get('final_results', {})
-                        st.success("🎯 Synthesis complete using signaturemethod!")
+                        st.success("Synthesis complete using signaturemethod!")
                         
                         # Store results in session state
                         st.session_state.analysis_results = results
                         
                         # Show completion message
-                        st.balloons()
-                        st.success("✅ Analysis complete! Check the 'View Results' tab to see the findings.")
+                        st.success("Analysis complete! Check the 'View Results' tab to see the findings.")
         
         except Exception as e:
             st.error(f"Analysis failed: {str(e)}")

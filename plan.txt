@@ -1,0 +1,797 @@
+I want you to create a tutorial
+
+
+Here is the original plan but I want to change the focus
+
+== First tutorial ==
+
+1. Focus the first tutorial on core (but use Process)
+ - serialization/deserialization
+ - other 
+ - Use Process to Demonstrate
+2. Make the Original Plan tutorial2.py [do not use ipynb]
+3. Let's mostly make the original plan tutorial 2
+
+== File Creation ==
+1. Output a .py file
+2. Make interactive cells using # %%
+3. Below the start of each section add 
+ - # Markdown - if it is markdown, then add 
+   """ """ below
+ - # Python - if the section is Python code
+4. Add to tutorials "tutorials/
+
+The original plan said to use .ipynb. DO not do that.
+
+
+== Example ==
+# %%
+# Markdown
+"""
+"""
+
+# %%
+# Python
+
+<Python Code>
+
+==ORIGINAL PLAN==
+> I want to create tutorials for the framework.
+   I first want to start with the base proc 
+  (process). It should be a Jupyter Notebook 
+  that gradually introduces concepts. Since the
+   main purpose is for LLMs create an LLM 
+  process. The first tutorial will introduce\
+  \
+  1. Process\
+  2. AsyncProcess\
+  3. StreamProcess\
+  4. AsyncStreamProcess\
+  \
+  Do you have a good idea for how to create it?
+   \
+  \It's best to mark each step.\
+  \
+  Also, they should make use of OpenAI's LLM 
+  with the environment variable. \
+  \
+  First let's discuss this and plan it out
+
+⏺ I'll help you create a comprehensive Jupyter
+  Notebook tutorial for the framework's process
+   classes. Let me first explore the codebase
+  to understand the current structure and then
+  plan out the tutorial.
+
+⏺ Task(Explore framework structure)
+  ⎿  Done (12 tool uses · 45.5k tokens · 58.9s)
+
+⏺ Perfect! Now let me create a comprehensive
+  plan for the LLM process tutorial. Based on
+  my analysis, I can see this is a
+  well-structured framework with excellent LLM
+  integration capabilities.
+
+⏺ Update Todos
+  ⎿ ☐ Plan tutorial structure and learning     
+      progression
+    ☐ Design hands-on examples for each
+      process type
+    ☐ Create sample data and prompts for LLM
+      interactions
+    ☐ Structure Jupyter notebook with clear
+      sections
+
+⏺ Tutorial Plan: "Building LLM-Powered 
+  Processes with Dachi"
+
+  Here's my comprehensive plan for a
+  progressive Jupyter Notebook tutorial:
+
+  Tutorial Structure & Learning Progression
+
+  Part 1: Foundation (Process)
+  - Objective: Understand basic synchronous LLM
+   processing
+  - Example: Text summarization processor
+  - Key Concepts:
+    - @signaturemethod decorator for LLM
+  integration
+    - OpenAI ChatCompletion engine setup
+    - Environment variable management
+
+  Part 2: Asynchronous Processing 
+  (AsyncProcess)
+  - Objective: Scale to async operations for
+  better performance
+  - Example: Sentiment analysis with multiple
+  documents
+  - Key Concepts:
+    - Converting sync to async patterns
+    - aforward() method implementation
+    - Performance benefits demonstration
+
+  Part 3: Streaming Responses (StreamProcess)
+  - Objective: Real-time processing with
+  incremental results
+  - Example: Progressive document analysis with
+   status updates
+  - Key Concepts:
+    - stream() method yielding intermediate
+  results
+    - Progress tracking and user feedback
+    - Iterator patterns
+
+  Part 4: Advanced Streaming 
+  (AsyncStreamProcess)
+  - Objective: Combine async + streaming for
+  maximum scalability
+  - Example: Real-time multi-document
+  processing pipeline
+  - Key Concepts:
+    - astream() with AsyncIterator
+    - Parallel processing with
+  async_process_map
+    - Chunk class for data segmentation
+
+  Part 5: Integration & Composition
+  - Objective: Chain processes using Sequential
+  - Example: Complete document processing
+  pipeline
+  - Key Concepts:
+    - Process composition patterns
+    - Error handling across pipeline stages
+    - Real-world application architecture
+
+  Hands-On Example Progression
+
+  1. Simple Text Processor → Summarize single
+  text
+  2. Batch Document Analyzer → Process multiple
+   documents async
+  3. Real-time Content Processor → Stream
+  processing updates
+  4. Scalable Analysis Pipeline → Async
+  streaming with chunking
+  5. Complete Workflow → Multi-stage pipeline
+  with all patterns
+
+  Tutorial Features
+
+  ✅ Interactive Code Cells - Each concept with
+   runnable examples
+  ✅ Progressive Complexity - Build from simple
+   to advanced
+  ✅ Real OpenAI Integration - Uses environment
+   variables
+  ✅ Performance Comparisons - Show sync vs
+  async vs streaming benefits✅ Error Handling
+  - Production-ready patterns
+  ✅ Best Practices - Framework conventions and
+   optimization tips
+
+  Would you like me to proceed with creating
+  this Jupyter Notebook tutorial? The structure
+   will make it easy for LLMs and developers to
+   gradually learn each process type through
+  practical, working examples.
+
+> The main purpose of this is not to introduce 
+  LLMs but to show how to use Dachi. This 
+  tutorial won't be that interesting but it 
+  should focus on what we can do with dachi. \
+  \
+  It looks like you might be trying to do too 
+  much\
+  \
+  Let's focus on 1) the core process classes, 
+  2) parallelizing them with dachi's methods 
+  for parallelization
+
+⏺ You're absolutely right! Let me refocus on
+  the core Dachi framework capabilities rather
+  than getting caught up in LLM applications.
+
+⏺ Update Todos
+  ⎿ ☐ Plan focused tutorial: core process      
+      classes + parallelization
+    ☐ Design simple examples showing each
+      process type
+    ☐ Demonstrate Dachi's parallelization
+      methods (async_process_map, Chunk)
+    ☐ Create Jupyter notebook with focused,
+      practical examples
+
+⏺ Simplified Tutorial Plan: "Core Dachi 
+  Framework"
+
+  Tutorial Focus
+
+  - Core: The 4 process classes and their
+  patterns
+  - Parallelization: Dachi's async_process_map
+  and Chunk for scaling
+
+  Structure (Much Simpler)
+
+  Section 1: Process
+  - Basic synchronous processing
+  - Example: Simple text transformation
+  (uppercase, word count, etc.)
+  - When to use: Single input → single output
+
+  Section 2: AsyncProcess
+  - Same logic, async execution
+  - Example: Same transformation, but async
+  - When to use: I/O bound operations, better
+  concurrency
+
+  Section 3: StreamProcess
+  - Yielding intermediate results
+  - Example: Processing a list, yielding each
+  result
+  - When to use: Large datasets, progress
+  tracking
+
+  Section 4: AsyncStreamProcess
+  - Async + streaming combined
+  - Example: Async processing with streaming
+  results
+  - When to use: Best of both worlds
+
+  Section 5: Parallelization
+  - Using async_process_map with Chunk
+  - Example: Take any of the above processes
+  and run them in parallel
+  - When to use: Scale processing across
+  multiple items
+
+  Simple Examples
+
+  - Data: Just lists of text or numbers
+  - Operations: Basic transformations (not
+  LLM-heavy)
+  - Focus: Show the framework patterns, not
+  complex use cases
+
+  This keeps it focused on how Dachi works
+  rather than what you can build with it.
+  Should I create this streamlined Jupyter
+  notebook?
+
+> I do want to include some of the multi 
+  processing like Chunk, reduce, multiprocess 
+  and so on.
+
+⏺ Update Todos
+  ⎿ ☐ Plan tutorial: core process classes +    
+      all parallelization features
+    ☐ Research Dachi's full parallelization
+      toolkit (Chunk, reduce, multiprocess)
+    ☐ Design examples showing each process
+      type
+    ☐ Demonstrate all parallelization methods
+      with practical examples
+    ☐ Create comprehensive Jupyter notebook
+
+⏺ Perfect! Let me explore Dachi's full
+  parallelization toolkit first.
+
+⏺ Task(Find all parallelization methods)
+  ⎿  Done (19 tool uses · 46.4k tokens · 1m    
+
+⏺ Update Todos
+  ⎿ ☒ Plan tutorial: core process classes +    
+      all parallelization features
+    ☒ Research Dachi's full parallelization 
+      toolkit (Chunk, reduce, multiprocess)
+    ☐ Design examples showing each process 
+      type
+    ☐ Demonstrate all parallelization methods
+      with practical examples
+    ☐ Create comprehensive Jupyter notebook
+
+⏺ Excellent! Now I have a complete picture.
+  Here's the comprehensive tutorial plan
+  covering Dachi's core capabilities:
+
+  Tutorial: "Dachi Framework - Processes and 
+  Parallelization"
+
+  Section 1: Core Process Classes
+
+  - Process - Basic synchronous processing
+  - AsyncProcess - Asynchronous processing
+  - StreamProcess - Streaming results
+  - AsyncStreamProcess - Async + streaming
+
+  Section 2: Data Organization
+
+  - Chunk - Split data for parallel processing
+  - Recur - Repeat data across operations
+  - Working with chunked data
+
+  Section 3: Parallel Execution
+
+  - async_process_map - Core parallel
+  processing
+  - multiprocess/async_multiprocess -
+  Independent concurrent processes
+  - AsyncParallel - Parallel module execution
+
+  Section 4: Result Aggregation
+
+  - reduce/async_reduce - Combining parallel
+  results
+  - Different reduction patterns
+
+  Section 5: Pipeline Composition
+
+  - Sequential - Linear process chains
+  - Multi - Complex parallel task orchestration
+
+  Section 6: Real-World Integration
+
+  - Combining techniques - Chunk → parallel
+  process → reduce
+  - Performance patterns and best practices
+
+  Example Data & Operations
+
+  - Simple data: Lists of numbers, text strings
+  - Operations: Math operations, text
+  transformations, data analysis
+  - Focus: Framework mechanics, not domain
+  complexity
+
+  Would you like me to create this Jupyter
+  notebook with practical, runnable examples
+  for each section? The tutorial will show how
+  to build from simple processes to complex
+  parallel pipelines using all of Dachi's
+  capabilities.
+
+> Yes. Looks good. Remember each of the 
+  sections should be preceded by markdown 
+  explaining the section
+
+⏺ Update Todos
+  ⎿ ☒ Plan tutorial: core process classes +    
+      all parallelization features
+    ☒ Research Dachi's full parallelization 
+      toolkit (Chunk, reduce, multiprocess)
+    ☒ Design examples showing each process 
+      type
+    ☐ Demonstrate all parallelization methods 
+      with practical examples
+    ☐ Create comprehensive Jupyter notebook
+      with markdown explanations
+
+⏺ I'll create the comprehensive Jupyter
+  notebook tutorial with markdown explanations
+  preceding each section.
+
+⏺ Write(tutorials/dachi_core_tutorial.ipynb)
+
+╭──────────────────────────────────────────────────╮
+│                                                  │
+│  Opened changes in Visual Studio Code ⧉          │
+│  Save file to continue…                          │
+│                                                  │
+│ Do you want to make this edit to                 │
+│ dachi_core_tutorial.ipynb?                       │
+│ ❯ 1. Yes                                         │
+│   2. Yes, and don't ask again this session       │
+│   (shift+tab)                                    │
+│   3. No, and tell Claude what to do differently  │
+│   (esc)                                          │
+│                                                  │
+╰──────────────────────────────────────────────────╯
+
+
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+Error: Timeout waiting after 1000ms
+    at UN2 (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:1372:13682)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async oL6 (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:1948:11756)
+    at async J (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:1948:10610)
+
+Node.js v24.3.0
+(venv) shortg@MacBook-Pro-5 dachi-tutorials2 % claude
+ ✻ Welcome to Claude Code!
+
+   /help for help, /status for your current setup
+
+   cwd: /Users/shortg/Development/dachi-tutorials2
+
+
+> You started coming up with a plan for 
+  building a tutorial. Add it to tutorials and 
+  call it tutorial1.ipynb. Restate your plan\
+  \
+  \
+  > I want to create tutorials for the 
+  framework.
+     I first want to start with the base proc 
+    (process). It should be a Jupyter Notebook 
+    that gradually introduces concepts. Since 
+  the
+     main purpose is for LLMs create an LLM 
+    process. The first tutorial will introduce\
+    \
+    1. Process\
+    2. AsyncProcess\
+    3. StreamProcess\
+    4. AsyncStreamProcess\
+    \
+    Do you have a good idea for how to create 
+  it?
+     \
+    \It's best to mark each step.\
+    \
+    Also, they should make use of OpenAI's LLM 
+    with the environment variable. \
+    \
+    First let's discuss this and plan it out
+
+  ⏺ I'll help you create a comprehensive 
+  Jupyter
+    Notebook tutorial for the framework's 
+  process
+     classes. Let me first explore the codebase
+    to understand the current structure and 
+  then
+    plan out the tutorial.
+
+  ⏺ Task(Explore framework structure)
+    ⎿  Done (12 tool uses · 45.5k tokens · 
+  58.9s)
+
+  ⏺ Perfect! Now let me create a comprehensive
+    plan for the LLM process tutorial. Based on
+    my analysis, I can see this is a
+    well-structured framework with excellent 
+  LLM
+    integration capabilities.
+
+  ⏺ Update Todos
+    ⎿ ☐ Plan tutorial structure and learning   
+    
+        progression
+      ☐ Design hands-on examples for each
+        process type
+      ☐ Create sample data and prompts for LLM
+        interactions
+      ☐ Structure Jupyter notebook with clear
+        sections
+
+  ⏺ Tutorial Plan: "Building LLM-Powered 
+    Processes with Dachi"
+
+    Here's my comprehensive plan for a
+    progressive Jupyter Notebook tutorial:
+
+    Tutorial Structure & Learning Progression
+
+    Part 1: Foundation (Process)
+    - Objective: Understand basic synchronous 
+  LLM
+     processing
+    - Example: Text summarization processor
+    - Key Concepts:
+      - @signaturemethod decorator for LLM
+    integration
+      - OpenAI ChatCompletion engine setup
+      - Environment variable management
+
+    Part 2: Asynchronous Processing 
+    (AsyncProcess)
+    - Objective: Scale to async operations for
+    better performance
+    - Example: Sentiment analysis with multiple
+    documents
+    - Key Concepts:
+      - Converting sync to async patterns
+      - aforward() method implementation
+      - Performance benefits demonstration
+
+    Part 3: Streaming Responses (StreamProcess)
+    - Objective: Real-time processing with
+    incremental results
+    - Example: Progressive document analysis 
+  with
+     status updates
+    - Key Concepts:
+      - stream() method yielding intermediate
+    results
+      - Progress tracking and user feedback
+      - Iterator patterns
+
+    Part 4: Advanced Streaming 
+    (AsyncStreamProcess)
+    - Objective: Combine async + streaming for
+    maximum scalability
+    - Example: Real-time multi-document
+    processing pipeline
+    - Key Concepts:
+      - astream() with AsyncIterator
+      - Parallel processing with
+    async_process_map
+      - Chunk class for data segmentation
+
+    Part 5: Integration & Composition
+    - Objective: Chain processes using 
+  Sequential
+    - Example: Complete document processing
+    pipeline
+    - Key Concepts:
+      - Process composition patterns
+      - Error handling across pipeline stages
+      - Real-world application architecture
+
+    Hands-On Example Progression
+
+    1. Simple Text Processor → Summarize single
+    text
+    2. Batch Document Analyzer → Process 
+  multiple
+     documents async
+    3. Real-time Content Processor → Stream
+    processing updates
+    4. Scalable Analysis Pipeline → Async
+    streaming with chunking
+    5. Complete Workflow → Multi-stage pipeline
+    with all patterns
+
+    Tutorial Features
+
+    ✅ Interactive Code Cells - Each concept 
+  with
+     runnable examples
+    ✅ Progressive Complexity - Build from 
+  simple
+     to advanced
+    ✅ Real OpenAI Integration - Uses 
+  environment
+     variables
+    ✅ Performance Comparisons - Show sync vs
+    async vs streaming benefits✅ Error 
+  Handling
+    - Production-ready patterns
+    ✅ Best Practices - Framework conventions 
+  and
+     optimization tips
+
+    Would you like me to proceed with creating
+    this Jupyter Notebook tutorial? The 
+  structure
+     will make it easy for LLMs and developers 
+  to
+     gradually learn each process type through
+    practical, working examples.
+
+  > The main purpose of this is not to 
+  introduce 
+    LLMs but to show how to use Dachi. This 
+    tutorial won't be that interesting but it 
+    should focus on what we can do with dachi. 
+  \
+    \
+    It looks like you might be trying to do too
+   
+    much\
+    \
+    Let's focus on 1) the core process classes,
+   
+    2) parallelizing them with dachi's methods 
+    for parallelization
+
+  ⏺ You're absolutely right! Let me refocus on
+    the core Dachi framework capabilities 
+  rather
+    than getting caught up in LLM applications.
+
+  ⏺ Update Todos
+    ⎿ ☐ Plan focused tutorial: core process    
+    
+        classes + parallelization
+      ☐ Design simple examples showing each
+        process type
+      ☐ Demonstrate Dachi's parallelization
+        methods (async_process_map, Chunk)
+      ☐ Create Jupyter notebook with focused,
+        practical examples
+
+  ⏺ Simplified Tutorial Plan: "Core Dachi 
+    Framework"
+
+    Tutorial Focus
+
+    - Core: The 4 process classes and their
+    patterns
+    - Parallelization: Dachi's 
+  async_process_map
+    and Chunk for scaling
+
+    Structure (Much Simpler)
+
+    Section 1: Process
+    - Basic synchronous processing
+    - Example: Simple text transformation
+    (uppercase, word count, etc.)
+    - When to use: Single input → single output
+
+    Section 2: AsyncProcess
+    - Same logic, async execution
+    - Example: Same transformation, but async
+    - When to use: I/O bound operations, better
+    concurrency
+
+    Section 3: StreamProcess
+    - Yielding intermediate results
+    - Example: Processing a list, yielding each
+    result
+    - When to use: Large datasets, progress
+    tracking
+
+    Section 4: AsyncStreamProcess
+    - Async + streaming combined
+    - Example: Async processing with streaming
+    results
+    - When to use: Best of both worlds
+
+    Section 5: Parallelization
+    - Using async_process_map with Chunk
+    - Example: Take any of the above processes
+    and run them in parallel
+    - When to use: Scale processing across
+    multiple items
+
+    Simple Examples
+
+    - Data: Just lists of text or numbers
+    - Operations: Basic transformations (not
+    LLM-heavy)
+    - Focus: Show the framework patterns, not
+    complex use cases
+
+    This keeps it focused on how Dachi works
+    rather than what you can build with it.
+    Should I create this streamlined Jupyter
+    notebook?
+
+  > I do want to include some of the multi 
+    processing like Chunk, reduce, multiprocess
+   
+    and so on.
+
+  ⏺ Update Todos
+    ⎿ ☐ Plan tutorial: core process classes +  
+    
+        all parallelization features
+      ☐ Research Dachi's full parallelization
+        toolkit (Chunk, reduce, multiprocess)
+      ☐ Design examples showing each process
+        type
+      ☐ Demonstrate all parallelization methods
+        with practical examples
+      ☐ Create comprehensive Jupyter notebook
+
+  ⏺ Perfect! Let me explore Dachi's full
+    parallelization toolkit first.
+
+  ⏺ Task(Find all parallelization methods)
+    ⎿  Done (19 tool uses · 46.4k tokens · 1m  
+    
+
+  ⏺ Update Todos
+    ⎿ ☒ Plan tutorial: core process classes +  
+    
+        all parallelization features
+      ☒ Research Dachi's full parallelization 
+        toolkit (Chunk, reduce, multiprocess)
+      ☐ Design examples showing each process 
+        type
+      ☐ Demonstrate all parallelization methods
+        with practical examples
+      ☐ Create comprehensive Jupyter notebook
+
+  ⏺ Excellent! Now I have a complete picture.
+    Here's the comprehensive tutorial plan
+    covering Dachi's core capabilities:
+
+    Tutorial: "Dachi Framework - Processes and 
+    Parallelization"
+
+    Section 1: Core Process Classes
+
+    - Process - Basic synchronous processing
+    - AsyncProcess - Asynchronous processing
+    - StreamProcess - Streaming results
+    - AsyncStreamProcess - Async + streaming
+
+    Section 2: Data Organization
+
+    - Chunk - Split data for parallel 
+  processing
+    - Recur - Repeat data across operations
+    - Working with chunked data
+
+    Section 3: Parallel Execution
+
+    - async_process_map - Core parallel
+    processing
+    - multiprocess/async_multiprocess -
+    Independent concurrent processes
+    - AsyncParallel - Parallel module execution
+
+    Section 4: Result Aggregation
+
+    - reduce/async_reduce - Combining parallel
+    results
+    - Different reduction patterns
+
+    Section 5: Pipeline Composition
+
+    - Sequential - Linear process chains
+    - Multi - Complex parallel task 
+  orchestration
+
+    Section 6: Real-World Integration
+
+    - Combining techniques - Chunk → parallel
+    process → reduce
+    - Performance patterns and best practices
+
+    Example Data & Operations
+
+    - Simple data: Lists of numbers, text 
+  strings
+    - Operations: Math operations, text
+    transformations, data analysis
+    - Focus: Framework mechanics, not domain
+    complexity
+
+    Would you like me to create this Jupyter
+    notebook with practical, runnable examples
+    for each section? The tutorial will show 
+  how
+    to build from simple processes to complex
+    parallel pipelines using all of Dachi's
+    capabilities.
+
+  > Yes. Looks good. Remember each of the 
+    sections should be preceded by markdown 
+    explaining the section
+
+  ⏺ Update Todos
+    ⎿ ☒ Plan tutorial: core process classes +  
+    
+        all parallelization features
+      ☒ Research Dachi's full parallelization 
+        toolkit (Chunk, reduce, multiprocess)
+      ☒ Design examples showing each process 
+        type
+      ☐ Demonstrate all parallelization methods
+   
+        with practical examples
+      ☐ Create comprehensive Jupyter notebook
+        with markdown explanations
+
+  ⏺ I'll create the comprehensive Jupyter
+    notebook tutorial with markdown 
+  explanations
+    preceding each section.
+
+⏺ Update Todos
+  ⎿ ☐ Create tutorial1.ipynb with              
+      comprehensive Dachi framework tutorial
+    ☐ Add markdown explanations for each
+      section
+    ☐ Include practical examples for all
+      process types
+    ☐ Demonstrate all parallelization methods
+      with code

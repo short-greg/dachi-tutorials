@@ -2,3 +2,6 @@
 .env
 framework/
 venv
+dev-docs/*
+*.pyc
+__pycache__/

@@ -17,7 +17,7 @@ def file_upload_component() -> Dict[str, str]:
     Returns:
         Dict of {filename: content} for uploaded files
     """
-    st.header("📁 Document Upload")
+    st.header("Document Upload")
     st.write("Upload multiple text files to analyze with Dachi's processing pipeline.")
     
     uploaded_files = st.file_uploader(
@@ -41,7 +41,7 @@ def file_upload_component() -> Dict[str, str]:
             word_count = len(content.split())
             char_count = len(content)
             
-            with st.expander(f"📄 {uploaded_file.name} ({word_count} words, {char_count} chars)"):
+            with st.expander(f"{uploaded_file.name} ({word_count} words, {char_count} chars)"):
                 st.text_area(
                     "Preview", 
                     content[:500] + "..." if len(content) > 500 else content,
@@ -59,7 +59,7 @@ def sample_documents_component() -> Dict[str, str]:
     Returns:
         Dict of {filename: content} for sample documents
     """
-    st.header("📚 Sample Documents")
+    st.header("Sample Documents")
     st.write("Or use our sample documents to see the pipeline in action.")
     
     if st.button("Load Sample Documents", type="primary"):
@@ -79,7 +79,7 @@ def sample_documents_component() -> Dict[str, str]:
             
             for filename, content in documents.items():
                 word_count = len(content.split())
-                with st.expander(f"📄 {filename} ({word_count} words)"):
+                with st.expander(f"{filename} ({word_count} words)"):
                     st.text_area(
                         "Preview",
                         content[:300] + "..." if len(content) > 300 else content,
@@ -99,7 +99,7 @@ def progress_tracker_component():
     Returns:
         Streamlit containers for progress updates
     """
-    st.header("⚙️ Processing Pipeline")
+    st.header("Processing Pipeline")
     st.write("Watch Dachi's async_process_map and signaturemethod in action!")
     
     # Create containers for different steps
@@ -145,11 +145,11 @@ def update_progress(containers: Dict, step: str, status: str, message: str, prog
         
         # Update status message
         if status == "started":
-            container['status'].info(f"🔄 {message}")
+            container['status'].info(f"{message}")
         elif status == "completed":
-            container['status'].success(f"✅ {message}")
+            container['status'].success(f"{message}")
         else:
-            container['status'].info(f"⏳ {message}")
+            container['status'].info(f"{message}")
         
         # Update progress bar
         container['progress'].progress(progress)
@@ -163,7 +163,7 @@ def results_display_component(chunk_results: List[Dict[str, Any]] = None, final_
         chunk_results: Results from individual chunk analysis
         final_results: Synthesized final results
     """
-    st.header("📊 Analysis Results")
+    # st.header("Analysis Results")
     
     if chunk_results:
         st.subheader("Chunk Analysis Results")
@@ -179,7 +179,7 @@ def results_display_component(chunk_results: List[Dict[str, Any]] = None, final_
         
         # Display results by document
         for doc_name, doc_results in doc_groups.items():
-            with st.expander(f"📄 {doc_name} ({len(doc_results)} chunks)"):
+            with st.expander(f"{doc_name} ({len(doc_results)} chunks)"):
                 for i, result in enumerate(doc_results):
                     st.write(f"**Chunk {i+1}:**")
                     col1, col2 = st.columns(2)
@@ -197,11 +197,11 @@ def results_display_component(chunk_results: List[Dict[str, Any]] = None, final_
                         st.write("**Sentiment:**")
                         sentiment = result.get('sentiment', 'neutral')
                         if sentiment == 'positive':
-                            st.success(f"😊 {sentiment.title()}")
+                            st.success(f"{sentiment.title()}")
                         elif sentiment == 'negative':
-                            st.error(f"😟 {sentiment.title()}")
+                            st.error(f"{sentiment.title()}")
                         else:
-                            st.info(f"😐 {sentiment.title()}")
+                            st.info(f"{sentiment.title()}")
                         
                         st.write("**Key Insights:**")
                         insights = result.get('key_insights', [])
@@ -212,11 +212,11 @@ def results_display_component(chunk_results: List[Dict[str, Any]] = None, final_
                         st.divider()
     
     if final_results:
-        st.subheader("🎯 Final Synthesis")
+        st.subheader("Final Synthesis")
         st.write("Comprehensive analysis across all documents:")
         
         # Overall Summary
-        st.write("**📝 Overall Summary:**")
+        st.write("**Overall Summary:**")
         st.info(final_results.get('overall_summary', 'No summary available'))
         
         # Layout in columns
@@ -224,24 +224,24 @@ def results_display_component(chunk_results: List[Dict[str, Any]] = None, final_
         
         with col1:
             # Common Themes
-            st.write("**🏷️ Common Themes:**")
+            st.write("**Common Themes:**")
             themes = final_results.get('common_themes', [])
             for theme in themes:
                 st.write(f"• {theme}")
             
             # Key Findings
-            st.write("**🔍 Key Findings:**")
+            st.write("**Key Findings:**")
             findings = final_results.get('key_findings', [])
             for finding in findings:
                 st.write(f"• {finding}")
         
         with col2:
             # Document Comparison
-            st.write("**📋 Document Comparison:**")
+            st.write("**Document Comparison:**")
             st.write(final_results.get('document_comparison', 'No comparison available'))
             
             # Recommendations
-            st.write("**💡 Recommendations:**")
+            st.write("**Recommendations:**")
             recommendations = final_results.get('recommendations', [])
             for rec in recommendations:
                 st.write(f"• {rec}")
@@ -255,7 +255,7 @@ def export_results_component(final_results: Dict[str, Any]):
         final_results: Final analysis results to export
     """
     if final_results:
-        st.header("💾 Export Results")
+        st.header("Export Results")
         
         col1, col2 = st.columns(2)
         
@@ -263,7 +263,7 @@ def export_results_component(final_results: Dict[str, Any]):
             # JSON export
             json_data = json.dumps(final_results, indent=2)
             st.download_button(
-                label="📄 Download as JSON",
+                label="Download as JSON",
                 data=json_data,
                 file_name="document_analysis_results.json",
                 mime="application/json"
@@ -291,7 +291,7 @@ def export_results_component(final_results: Dict[str, Any]):
 """
             
             st.download_button(
-                label="📝 Download as Report",
+                label="Download as Report",
                 data=report,
                 file_name="document_analysis_report.txt",
                 mime="text/plain"

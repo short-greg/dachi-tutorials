@@ -38,8 +38,15 @@ def main():
     
     print(f"Launching {tutorial_name} tutorial...")
     
-    # Run streamlit with the tutorial's main.py
-    cmd = ["streamlit", "run", str(main_file)] + sys.argv[2:]
+    # Use the virtual environment's streamlit
+    venv_streamlit = Path(__file__).parent / "venv" / "bin" / "streamlit"
+    
+    if venv_streamlit.exists():
+        cmd = [str(venv_streamlit), "run", str(main_file)] + sys.argv[2:]
+    else:
+        # Fallback to system streamlit
+        cmd = ["streamlit", "run", str(main_file)] + sys.argv[2:]
+    
     subprocess.run(cmd)
 
 
